@@ -3,7 +3,11 @@
 
 using namespace std;
 
-
+/********************************
+ * 仿函数定义为模板函数
+ * HashFunc的功能是计算key的
+ * hash处理后的值
+*********************************/
 template <class Key>
 class HashFunc
 {
@@ -14,7 +18,10 @@ class HashFunc
     }
 };
 
-//模板特化
+/*********************************
+ * 特化模板函数
+ * 方便对string类型的变量进行hash
+ *********************************/
 template <>
 class HashFunc<string>
 {
@@ -32,6 +39,10 @@ public:
     }
 };
 
+/*********************************
+ * 特化模板函数
+ * 方便对int类型的变量进行hash
+ *********************************/
 template <>
 class HashFunc<int>
 {
@@ -42,7 +53,11 @@ class HashFunc<int>
     }
 };
 
-
+/********************************
+ * 仿函数定义为模板函数
+ * EqualFunc的功能是比较两个key值
+ * 是否相等
+*********************************/
 template <class Key>
 class EqualFunc
 {
@@ -53,6 +68,10 @@ public:
     }
 };
 
+/*********************************
+ * 特化模板函数
+ * 方便对string类型的key值进行比较
+ *********************************/
 template <>
 class EqualFunc<string>
 {
@@ -63,7 +82,10 @@ public:
     }
 };
 
-
+/*********************************
+ * 特化模板函数
+ * 方便对int类型的key值进行比较
+ *********************************/
 template <>
 class EqualFunc<int>
 {
@@ -74,12 +96,12 @@ public:
     }
 };
 
-
+/*********************************
+ * HashNode模板函数
+ *********************************/
 template<class Key, class Value>
 class HashNode
 {
-private:
-    /* data */
 public:
     Key _key;
     Value _val;
@@ -101,7 +123,11 @@ public:
 
 };
 
-template <class Key, class Value, class HashFunc, class EqualFunc> class HashMap
+/*********************************
+ * HashMap模板函数
+ *********************************/
+template <class Key, class Value, class HashFunc, class EqualFunc> 
+class HashMap
 {
 private:
     HashFunc hash;
@@ -117,6 +143,10 @@ public:
     Value & operator [](const Key& key);    //高级查找
 };
 
+/*********************************
+ * HashMap成员函数：
+ * 构造函数Hashmap
+ *********************************/
 template <class Key, class Value, class HashFunc, class EqualFunc>
 HashMap<Key, Value, HashFunc, EqualFunc>::HashMap(int size)
 {
@@ -128,12 +158,20 @@ HashMap<Key, Value, HashFunc, EqualFunc>::HashMap(int size)
         table[i] = NULL;
 }
 
+/*********************************
+ * HashMap成员函数：
+ * 析构函数~Hashmap
+ *********************************/
 template <class Key, class Value, class HashFunc, class EqualFunc>
 HashMap<Key, Value, HashFunc, EqualFunc>::~HashMap()
 {
     delete[] table;
 }
 
+/*********************************
+ * HashMap成员函数：
+ * 插入函数insert
+ *********************************/
 template <class Key, class Value, class HashFunc, class EqualFunc>
 bool HashMap<Key, Value, HashFunc, EqualFunc>::insert(const Key & key, const Value & val)
 {
@@ -145,6 +183,10 @@ bool HashMap<Key, Value, HashFunc, EqualFunc>::insert(const Key & key, const Val
     return true;
 }
 
+/*********************************
+ * HashMap成员函数：
+ * 删除函数del
+ *********************************/
 template <class Key, class Value, class HashFunc, class EqualFunc>
 bool HashMap<Key, Value, HashFunc, EqualFunc>::del(const Key & key)
 {
@@ -177,6 +219,9 @@ bool HashMap<Key, Value, HashFunc, EqualFunc>::del(const Key & key)
     return false;
 }
 
+/*********************************
+ * HashMap重载[]运算符实现查找操作
+ *********************************/
 template <class Key, class Value, class HashFunc, class EqualFunc>
 Value & HashMap<Key, Value, HashFunc, EqualFunc>::operator [] (const Key & key)
 {
