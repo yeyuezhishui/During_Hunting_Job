@@ -8,7 +8,7 @@ Some codes during the hard time hunting for a job
 - [During_Hunting_Job/Heap_Sort/](https://github.com/yeyuezhishui/During_Hunting_Job/tree/master/Heap_Sort)
 - 使用数组实现，注意各个特殊节点的数组下标
 - 同时实现了建堆与堆排序操作
+- 测试文件main.cpp测试了string类型和int类型的hashmap功能。
 ## 华为面试题 简单基础
 - [During_Hunting_Job/HuaWei/](https://github.com/yeyuezhishui/During_Hunting_Job/tree/master/HuaWei)
-- 测试文件main.cpp测试了string类型和int类型的hashmap功能。
 
